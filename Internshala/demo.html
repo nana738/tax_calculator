@@ -24,39 +24,41 @@
         <h2 class="text-center mb-4">Tax Calculator</h2>
         <form id="taxForm">
             <div class="form-group">
-                <label for="age">Age</label>
-                <select class="form-control" id="age" name="age">
-                    <option value="<40">&lt;40</option>
-                    <option value=">=40&<60">&ge;40 &lt;60</option>
-                    <option value=">=60">&ge;60</option>
+                <label for="age">Enter age group</label>
+                    <select class="form-control" id="age" name="age">
+                    <option value="" disabled selected hidden>Enter your age</option>
+                    <option value="<40">Less than 40</option>
+                    <option value=">=40&<60">Between 40 and 60</option>
+                    <option value=">=60">60 or older</option>
                 </select>
                 <span class="error-tooltip" id="ageError"></span>
             </div>
             <div class="form-group">
-                <label for="income">Gross Annual Income (in Lakhs) 
+                <label for="income">Enter Gross Annual Income (in Lakhs) 
                     <i class="far fa-question-circle" onclick="toggleTooltip('incomeTooltip')" title="Gross annual income is your total salary in a year before any deductions."></i>
                 </label>
-                <input type="number" class="form-control" id="income" name="income">
+                <input type="number" class="form-control" id="income" name="income" placeholder="Enter gross annual income">
                 <span class="error-tooltip" id="incomeError"></span>
                 <div class="tooltip-container" id="incomeTooltip">
                     Gross annual income is your total salary in a year before any deductions.
                 </div>
             </div>
+            
             <div class="form-group">
-                <label for="extraIncome">Extra Income (in Lakhs) 
+                <label for="extraIncome">Enter Extra Income (in Lakhs) 
                     <i class="far fa-question-circle" onclick="toggleTooltip('extraIncomeTooltip')" title="Any additional income earned apart from the gross annual income."></i>
                 </label>
-                <input type="number" class="form-control" id="extraIncome" name="extraIncome">
+                <input type="number" class="form-control" id="extraIncome" name="extraIncome" placeholder="Enter extra income from other sources">
                 <span class="error-tooltip" id="extraIncomeError"></span>
                 <div class="tooltip-container" id="extraIncomeTooltip">
                     Any additional income earned apart from the gross annual income.
                 </div>
             </div>
             <div class="form-group">
-                <label for="deductions">Deductions (in Lakhs) 
+                <label for="deductions">Enter total deductions (in Lakhs) 
                     <i class="far fa-question-circle" onclick="toggleTooltip('deductionsTooltip')" title="Amount deducted from the gross annual income (e.g., investments, expenses)."></i>
                 </label>
-                <input type="number" class="form-control" id="deductions" name="deductions">
+                <input type="number" class="form-control" id="deductions" name="deductions" placeholder="Add total applicable deductions">
                 <span class="error-tooltip" id="deductionsError"></span>
                 <div class="tooltip-container" id="deductionsTooltip">
                     Amount deducted from the gross annual income (e.g., investments, expenses).
