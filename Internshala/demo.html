@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tax Calculator</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Move the hover tooltip CSS to a global style section */
+        .tooltip-container {
+            background-color: yellow;
+            padding: 20px;
+            display: none;
+        }
+        span:hover + .tooltip-container {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="text-center mb-4">Tax Calculator</h2>
+        <form id="taxForm">
+            <div class="form-group">
+                <label for="age">Age</label>
+                <select class="form-control" id="age" name="age">
+                    <option value="<40">&lt;40</option>
+                    <option value=">=40&<60">&ge;40 &lt;60</option>
+                    <option value=">=60">&ge;60</option>
+                </select>
+                <span class="error-tooltip" id="ageError"></span>
+            </div>
+            <div class="form-group">
+                <label for="income">Gross Annual Income (in Lakhs) 
+                    <i class="far fa-question-circle" onclick="toggleTooltip('incomeTooltip')" title="Gross annual income is your total salary in a year before any deductions."></i>
+                </label>
+                <input type="number" class="form-control" id="income" name="income">
+                <span class="error-tooltip" id="incomeError"></span>
+                <div class="tooltip-container" id="incomeTooltip">
+                    Gross annual income is your total salary in a year before any deductions.
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="extraIncome">Extra Income (in Lakhs) 
+                    <i class="far fa-question-circle" onclick="toggleTooltip('extraIncomeTooltip')" title="Any additional income earned apart from the gross annual income."></i>
+                </label>
+                <input type="number" class="form-control" id="extraIncome" name="extraIncome">
+                <span class="error-tooltip" id="extraIncomeError"></span>
+                <div class="tooltip-container" id="extraIncomeTooltip">
+                    Any additional income earned apart from the gross annual income.
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="deductions">Deductions (in Lakhs) 
+                    <i class="far fa-question-circle" onclick="toggleTooltip('deductionsTooltip')" title="Amount deducted from the gross annual income (e.g., investments, expenses)."></i>
+                </label>
+                <input type="number" class="form-control" id="deductions" name="deductions">
+                <span class="error-tooltip" id="deductionsError"></span>
+                <div class="tooltip-container" id="deductionsTooltip">
+                    Amount deducted from the gross annual income (e.g., investments, expenses).
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Calculate Tax</button>
+        </form>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="resultModal" tabindex="-1" role="dialog" aria-labelledby="resultModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title" id="resultModalLabel">Tax Calculation Result</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p id="resultAmount"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+
+    <script>
+        function toggleTooltip(tooltipId) {
+            var tooltip = document.getElementById(tooltipId);
+            if (tooltip.style.display === "block") {
+                tooltip.style.display = "none";
+            } else {
+                tooltip.style.display = "block";
+            }
+        }
+    </script>
+
+    <div class="modal" id="resultModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Tax Calculation Result</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p id="resultAmount"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>
